@@ -35,6 +35,22 @@ public class Job {
     //  match.
 
     @Override
+    public String toString() {
+
+//        if (id >= 1 && name.isEmpty() && employer.isEmpty() && location.isEmpty() && positionType.isEmpty() && coreCompetency.isEmpty()){
+//            return "OOPS! This job does not seem to exist.";
+//        }
+
+        return  System.lineSeparator() +
+                "ID: " + id + System.lineSeparator() +
+                "Name: " + (name.isEmpty() ? "Data not available" : name) + System.lineSeparator() +
+                "Employer: " + (employer.getValue().isEmpty() ? "Data not available" : employer) + System.lineSeparator() +
+                "Location: " + (location.getValue().isEmpty() ? "Data not available" : location) + System.lineSeparator() +
+                "Position Type: " + (positionType.getValue().isEmpty() ? "Data not available" : positionType) + System.lineSeparator() +
+                "Core Competency: " + (coreCompetency.getValue().isEmpty() ? "Data not available" : coreCompetency) + System.lineSeparator();
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;

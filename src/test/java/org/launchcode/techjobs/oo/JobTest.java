@@ -53,4 +53,67 @@ public class JobTest {
         assertNotEquals(comcastSDjob1.getEmployer().getId(), comcastSDjob2.getEmployer().getId(), .001);
     }
 
-}
+
+    @Test
+    public void testToStringStartsAndEndsWithNewLine() {
+
+//        When passed a Job object, it should return a string that contains
+//        a blank line before and after the job information.
+
+        Employer comcast = new Employer("Comcast");
+        Location philly = new Location("Philadelphia");
+        PositionType entryLevel = new PositionType("Entry Level");
+        CoreCompetency js = new CoreCompetency("Javascript");
+        Job comcastSDjob1 = new Job("Software Developer", comcast, philly, entryLevel, js);
+
+
+        assertEquals(comcastSDjob1.toString().substring(0, 1), System.lineSeparator());
+
+    }
+
+    @Test
+    public void testToStringContainsCorrectLabelsAndData() {
+
+
+        Employer comcast = new Employer("Comcast");
+        Location philly = new Location("Philadelphia");
+        PositionType entryLevel = new PositionType("Entry Level");
+        CoreCompetency js = new CoreCompetency("Javascript");
+        Job comcastSDjob1 = new Job("Software Developer", comcast, philly, entryLevel, js);
+
+
+        assertEquals(comcastSDjob1.toString(),
+                System.lineSeparator() +
+                        "ID: " + comcastSDjob1.getId() + "\n" +
+                        "Name: " + comcastSDjob1.getName() + "\n" +
+                "Employer: " + comcastSDjob1.getEmployer() + "\n" +
+                "Location: " + comcastSDjob1.getLocation() + "\n" +
+                "Position Type: " + comcastSDjob1.getPositionType() + "\n" +
+                "Core Competency: " + comcastSDjob1.getCoreCompetency() + System.lineSeparator());
+
+    }
+
+    @Test
+
+    public void testToStringHandlesEmptyField() {
+
+        Employer comcast = new Employer("Comcast");
+        Location philly = new Location("Philadelphia");
+        PositionType entryLevel = new PositionType("Entry Level");
+        CoreCompetency js = new CoreCompetency("");
+        Job comcastSDjob1 = new Job("Software Developer", comcast, philly, entryLevel, js);
+
+        assertEquals(comcastSDjob1.toString(),
+                System.lineSeparator() +
+                        "ID: " + comcastSDjob1.getId() + "\n" +
+                        "Name: " + comcastSDjob1.getName() + "\n" +
+                        "Employer: " + comcastSDjob1.getEmployer() + "\n" +
+                        "Location: " + comcastSDjob1.getLocation() + "\n" +
+                        "Position Type: " + comcastSDjob1.getPositionType() + "\n" +
+                        "Core Competency: Data not available" + System.lineSeparator());
+
+
+    }
+
+    }
+
