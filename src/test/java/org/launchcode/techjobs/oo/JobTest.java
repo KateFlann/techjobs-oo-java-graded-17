@@ -19,7 +19,7 @@ public class JobTest {
        Job comcastSDjob = new Job("Software Developer",  comcast, philly, entryLevel, js);
        Job comcastSEjob = new Job("Senior Engineer", comcast, philly, entryLevel, js);
 
-        assertNotEquals(comcastSDjob.getEmployer().getId(), comcastSEjob.getEmployer().getId(), .001);
+        assertNotEquals(comcastSDjob.getId(), comcastSEjob.getId(), .001);
     }
 
     @Test
@@ -32,10 +32,10 @@ public class JobTest {
 
         assertTrue(productTester.getId()>=1);
         assertEquals("Product tester", productTester.getName());
-        assertEquals(productTester.getEmployer().getValue(), "ACME");
-        assertEquals(productTester.getLocation().getValue(), "Desert");
-        assertEquals(productTester.getEmployer().getValue(),"Quality Control");
-        assertEquals(productTester.getEmployer().getValue(),"Persistence");
+        assertEquals("ACME", productTester.getEmployer().getValue());
+        assertEquals("Desert", productTester.getLocation().getValue());
+        assertEquals("Quality control", productTester.getPositionType().getValue());
+        assertEquals("Persistence", productTester.getCoreCompetency().getValue());
 
 
     }
@@ -50,7 +50,7 @@ public class JobTest {
         Job comcastSDjob1 = new Job("Software Developer",  comcast, philly, entryLevel, js);
         Job comcastSDjob2 = new Job("Software Developer",  comcast, philly, entryLevel, js);
 
-        assertNotEquals(comcastSDjob1.getEmployer().getId(), comcastSDjob2.getEmployer().getId(), .001);
+        assertNotEquals(comcastSDjob1.getId(), comcastSDjob2.getId(), .001);
     }
 
 
@@ -67,8 +67,8 @@ public class JobTest {
         Job comcastSDjob1 = new Job("Software Developer", comcast, philly, entryLevel, js);
 
 
-        assertEquals(comcastSDjob1.toString().substring(0, 1), System.lineSeparator());
-
+        assertEquals(System.lineSeparator(), comcastSDjob1.toString().substring(0, 2));
+        assertEquals(System.lineSeparator(), comcastSDjob1.toString().substring(comcastSDjob1.toString().length()-2));
     }
 
     @Test
@@ -84,11 +84,11 @@ public class JobTest {
 
         assertEquals(comcastSDjob1.toString(),
                 System.lineSeparator() +
-                        "ID: " + comcastSDjob1.getId() + "\n" +
-                        "Name: " + comcastSDjob1.getName() + "\n" +
-                "Employer: " + comcastSDjob1.getEmployer() + "\n" +
-                "Location: " + comcastSDjob1.getLocation() + "\n" +
-                "Position Type: " + comcastSDjob1.getPositionType() + "\n" +
+                        "ID: " + comcastSDjob1.getId() + System.lineSeparator() +
+                        "Name: " + comcastSDjob1.getName() + System.lineSeparator() +
+                "Employer: " + comcastSDjob1.getEmployer() + System.lineSeparator() +
+                "Location: " + comcastSDjob1.getLocation() + System.lineSeparator() +
+                "Position Type: " + comcastSDjob1.getPositionType() + System.lineSeparator() +
                 "Core Competency: " + comcastSDjob1.getCoreCompetency() + System.lineSeparator());
 
     }
@@ -105,11 +105,11 @@ public class JobTest {
 
         assertEquals(comcastSDjob1.toString(),
                 System.lineSeparator() +
-                        "ID: " + comcastSDjob1.getId() + "\n" +
-                        "Name: " + comcastSDjob1.getName() + "\n" +
-                        "Employer: " + comcastSDjob1.getEmployer() + "\n" +
-                        "Location: " + comcastSDjob1.getLocation() + "\n" +
-                        "Position Type: " + comcastSDjob1.getPositionType() + "\n" +
+                        "ID: " + comcastSDjob1.getId() + System.lineSeparator() +
+                        "Name: " + comcastSDjob1.getName() + System.lineSeparator() +
+                        "Employer: " + comcastSDjob1.getEmployer() + System.lineSeparator() +
+                        "Location: " + comcastSDjob1.getLocation() + System.lineSeparator() +
+                        "Position Type: " + comcastSDjob1.getPositionType() + System.lineSeparator() +
                         "Core Competency: Data not available" + System.lineSeparator());
 
 
